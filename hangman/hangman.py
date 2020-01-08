@@ -11,21 +11,26 @@ class Hangman:
         self.word = word
         self.wordProgress = ["_" for char in self.word]
         self.guessed = False
+        self.charBank = ""
 
     def guess(self, char):
         if self.status != "ongoing":
-            raise ValueError
+            raise ValueError("Game not in operation")
+        
+        if char in self.charBank:
+            self.remaining_guesses -= 1
+            print("Please remember your guesses! -1 guess")
             
-        for index, el in enumerate(self.wordProgress):
+        for index, el in enumerate(self.word):
             if el == char:
+                self.charBank += char
                 self.wordProgress[index] = char
                 #Set flag to True so guesses do not decrease
                 self.guessed = True
-                
-        #Decrease guesses only when flag isn't True        
+
         if self.guessed == False:
             self.remaining_guesses -= 1
-        
+
         if self.remaining_guesses < 0:
             self.status = STATUS_LOSE
         elif "_" not in self.wordProgress:
