@@ -14,10 +14,3 @@ class Box():
       raise ValueError("Invalid number")
     
     return "".join(blank)
-
-
-
-
-x = Box("1-519.437-2526")
-
-x.number
