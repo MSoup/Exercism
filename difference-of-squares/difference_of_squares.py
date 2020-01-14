@@ -12,6 +12,10 @@ You are not expected to discover an efficient solution to this yourself from fir
 """
 
 def squareDiff(n):
+
+  """
+  #Inefficient way
+
   sumSquares = 0
   squareSum = 0
   for i in range(1,n+1):
@@ -23,3 +27,9 @@ def squareDiff(n):
   squareSum = squareSum ** 2
 
   return abs(sumSquares - squareSum)
+  """
+  #Thanks Carl Friedrich Gauss
+
+  return int(((n * (n + 1)) / 2)**2 - (n * (n + 1) * (2 * n + 1)) / 6)
+
+print(squareDiff(100))
