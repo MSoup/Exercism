@@ -46,5 +46,6 @@ def gen():
       print('On the ' + days[i] + ' day of Christmas my true love gave to me: ' + phrases[i], end = ", ", flush=True) 
       print(*remember)
       remember.insert(0, phrases[i] + ',')
+      print()
 
 gen()
