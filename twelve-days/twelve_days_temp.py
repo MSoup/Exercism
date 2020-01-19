@@ -1,4 +1,11 @@
-def recite(n, m):
+"""
+On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree.
+
+On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+
+"""
+
+def gen():
   days = {
     1: 'first',
     2: 'second',
@@ -30,7 +37,7 @@ def recite(n, m):
   }
 
   remember = []
-  for i in range(1,n):
+  for i in range(1,13):
     if i == 1:
       print('On the ' + days[i] + ' day of Christmas my true love gave to me: ' + phrases[i])
       remember.insert(0, 'and ' + phrases[i])
@@ -40,5 +47,5 @@ def recite(n, m):
       print(*remember)
       remember.insert(0, phrases[i] + ',')
       print()
-      
-  return remember
+
+gen()
