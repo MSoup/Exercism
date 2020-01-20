@@ -1,2 +1,2 @@
 language = "python3"
-run = "series/series.py"
+run = "python series/series_test.py"
