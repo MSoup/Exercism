@@ -8,8 +8,8 @@ def recite(n, m):
     5: ['fifth','five Gold Rings'],
     6: ['sixth','six Geese-a-Laying'],
     7: ['seventh','seven Swans-a-Swimming'],
-    8: ['eigth','eight Maids-a-Milking'],
-    9: ['nineth','nine Ladies Dancing'],
+    8: ['eighth','eight Maids-a-Milking'],
+    9: ['ninth','nine Ladies Dancing'],
     10:['tenth','ten Lords-a-Leaping'],
     11: ['eleventh','eleven Pipers Piping'],
     12: ['twelfth','twelve Drummers Drumming']
@@ -31,10 +31,15 @@ def recite(n, m):
         text += days[i][1] + ", "
     return text
 
+  #For purposes of answering the question, make a list to store answer
+  answer = []
+
   for i in range(n, m+1):
     #Cover the first case where n == 1, this ensures that "and" will never be added to the first day of Christmas
     if n == 1:
-      print('On the ' + days[i][0] + ' day of Christmas my true love gave to me: ' + days[i][1])
+      return ['On the ' + days[i][0] + ' day of Christmas my true love gave to me: ' + days[i][1]]
     #If it's not day 1, then call helper function to generate lyrics and append "and" to the last lyric
     else:
-      print('On the ' + days[i][0] + ' day of Christmas my true love gave to me: ' + getPhrase(i, days))
+      answer.append('On the ' + days[i][0] + ' day of Christmas my true love gave to me: ' + getPhrase(i, days))
+  
+  return answer
