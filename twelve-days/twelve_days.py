@@ -1,44 +1,40 @@
 def recite(n, m):
+  #Dict to make it easy to map number to day and phrase
   days = {
-    1: 'first',
-    2: 'second',
-    3: 'third',
-    4: 'fourth',
-    5: 'fifth',
-    6: 'sixth',
-    7: 'seventh',
-    8: 'eigth',
-    9: 'nineth',
-    10: 'tenth',
-    11: 'eleventh',
-    12: 'twelfth'
+    1: ['first','a Partridge in a Pear Tree.'],
+    2: ['second','two Turtle Doves'],
+    3: ['third','three French Hens'],
+    4: ['fourth','four Calling Birds'],
+    5: ['fifth','five Gold Rings'],
+    6: ['sixth','six Geese-a-Laying'],
+    7: ['seventh','seven Swans-a-Swimming'],
+    8: ['eigth','eight Maids-a-Milking'],
+    9: ['nineth','nine Ladies Dancing'],
+    10:['tenth','ten Lords-a-Leaping'],
+    11: ['eleventh','eleven Pipers Piping'],
+    12: ['twelfth','twelve Drummers Drumming']
   }
 
-  phrases = {
-    12: 'twelve Drummers Drumming',
-    11: 'eleven Pipers Piping',
-    10:'ten Lords-a-Leaping',
-    9: 'nine Ladies Dancing',
-    8: 'eight Maids-a-Milking',
-    7: 'seven Swans-a-Swimming',
-    6: 'six Geese-a-Laying',
-    5: 'five Gold Rings',
-    4: 'four Calling Birds',
-    3: 'three French Hens',
-    2: 'two Turtle Doves',
-    1: 'a Partridge in a Pear Tree.'
-  }
+  #Helper function to generate list of phrases for corresponding day
+  #Arg1: num, which represents the day (between n and m)
+  #Arg2: days, pass whole dict to getPhrase
+  def getPhrase(num, days):
+    text = ""
 
-  remember = []
-  for i in range(1,n):
-    if i == 1:
-      print('On the ' + days[i] + ' day of Christmas my true love gave to me: ' + phrases[i])
-      remember.insert(0, 'and ' + phrases[i])
+    #Count downwards from num to create descending lyrics
+    for i in range(num,0,-1):
+      #Add "and" if we reach 1
+      if i == 1:
+        text += "and " + days[i][1]
+      else:
+      #Else, continue appending to the lyrics
+        text += days[i][1] + ", "
+    return text
 
+  for i in range(n, m+1):
+    #Cover the first case where n == 1, this ensures that "and" will never be added to the first day of Christmas
+    if n == 1:
+      print('On the ' + days[i][0] + ' day of Christmas my true love gave to me: ' + days[i][1])
+    #If it's not day 1, then call helper function to generate lyrics and append "and" to the last lyric
     else:
-      print('On the ' + days[i] + ' day of Christmas my true love gave to me: ' + phrases[i], end = ", ", flush=True) 
-      print(*remember)
-      remember.insert(0, phrases[i] + ',')
-      print()
-      
-  return remember
+      print('On the ' + days[i][0] + ' day of Christmas my true love gave to me: ' + getPhrase(i, days))
