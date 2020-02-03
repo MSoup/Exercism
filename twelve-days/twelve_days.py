@@ -36,10 +36,10 @@ def recite(n, m):
 
   for i in range(n, m+1):
     #Cover the first case where n == 1, this ensures that "and" will never be added to the first day of Christmas
-    if n == 1:
-      return ['On the ' + days[i][0] + ' day of Christmas my true love gave to me: ' + days[i][1]]
+    if i == 1:
+      answer.append(f'On the {days[i][0]} day of Christmas my true love gave to me: {days[i][1]}')
     #If it's not day 1, then call helper function to generate lyrics and append "and" to the last lyric
     else:
-      answer.append('On the ' + days[i][0] + ' day of Christmas my true love gave to me: ' + getPhrase(i, days))
+      answer.append(f'On the {days[i][0]} day of Christmas my true love gave to me: {getPhrase(i, days)}')
   
   return answer
