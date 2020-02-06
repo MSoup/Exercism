@@ -1,45 +1,42 @@
-def recite(n, m):
+def recite(start_verse, end_verse):
   #Dict to make it easy to map number to day and phrase
-  days = {
-    1: ['first','a Partridge in a Pear Tree.'],
-    2: ['second','two Turtle Doves'],
-    3: ['third','three French Hens'],
-    4: ['fourth','four Calling Birds'],
-    5: ['fifth','five Gold Rings'],
-    6: ['sixth','six Geese-a-Laying'],
-    7: ['seventh','seven Swans-a-Swimming'],
-    8: ['eighth','eight Maids-a-Milking'],
-    9: ['ninth','nine Ladies Dancing'],
-    10:['tenth','ten Lords-a-Leaping'],
-    11: ['eleventh','eleven Pipers Piping'],
-    12: ['twelfth','twelve Drummers Drumming']
-  }
 
-  #Helper function to generate list of phrases for corresponding day
-  #Arg1: num, which represents the day (between n and m)
-  #Arg2: days, pass whole dict to getPhrase
-  def getPhrase(num, days):
-    text = ""
+  component = (['first','a Partridge in a Pear Tree.'],
+              ['second','two Turtle Doves'],
+              ['third','three French Hens'],
+              ['fourth','four Calling Birds'],
+              ['fifth','five Gold Rings'],
+              ['sixth','six Geese-a-Laying'],
+              ['seventh','seven Swans-a-Swimming'],
+              ['eighth','eight Maids-a-Milking'],
+              ['ninth','nine Ladies Dancing'],
+              ['tenth','ten Lords-a-Leaping'],
+              ['eleventh','eleven Pipers Piping'],
+              ['twelfth','twelve Drummers Drumming'])
 
-    #Count downwards from num to create descending lyrics
-    for i in range(num,0,-1):
-      #Add "and" if we reach 1
-      if i == 1:
-        text += "and " + days[i][1]
-      else:
-      #Else, continue appending to the lyrics
-        text += days[i][1] + ", "
-    return text
-
-  #For purposes of answering the question, make a list to store answer
-  answer = []
-
-  for i in range(n, m+1):
-    #Cover the first case where n == 1, this ensures that "and" will never be added to the first day of Christmas
-    if i == 1:
-      answer.append(f'On the {days[i][0]} day of Christmas my true love gave to me: {days[i][1]}')
-    #If it's not day 1, then call helper function to generate lyrics and append "and" to the last lyric
-    else:
-      answer.append(f'On the {days[i][0]} day of Christmas my true love gave to me: {getPhrase(i, days)}')
   
-  return answer
+  #Helper function to build list of presents
+  def getSong(parts):
+    compilePresents = []
+
+    if parts == 1:
+      return 'a Partridge in a Pear Tree.'
+    else:
+      compilePresents.append(", ".join(present[parts-1:0:-1]))
+
+    compilePresents.append(', and a Partridge in a Pear Tree.')
+
+    return "".join(i for i in compilePresents)
+
+  #Break into lists of days and presents
+  day = [d[0] for d in component]
+  present = [p[1] for p in component]
+
+  song = []
+
+  #For num in given start verse
+  #Take index of component minus 1 since component index 0 is day 1
+  for verse in range(start_verse, end_verse + 1):
+    song.append(f'On the {day[verse-1]} day of Christmas my true love gave to me: {getSong(verse)}')
+
+  return song
