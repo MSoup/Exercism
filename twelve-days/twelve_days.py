@@ -1,6 +1,4 @@
 def recite(start_verse, end_verse):
-  #Dict to make it easy to map number to day and phrase
-
   component = (['first','a Partridge in a Pear Tree.'],
               ['second','two Turtle Doves'],
               ['third','three French Hens'],
@@ -16,17 +14,17 @@ def recite(start_verse, end_verse):
 
   
   #Helper function to build list of presents
-  def getSong(parts):
-    compilePresents = []
+  def get_song(parts):
+    compile_presents = []
 
     if parts == 1:
       return 'a Partridge in a Pear Tree.'
     else:
-      compilePresents.append(", ".join(present[parts-1:0:-1]))
+      compile_presents.append(", ".join(present[parts-1:0:-1]))
 
-    compilePresents.append(', and a Partridge in a Pear Tree.')
+    compile_presents.append(', and a Partridge in a Pear Tree.')
 
-    return "".join(i for i in compilePresents)
+    return "".join(i for i in compile_presents)
 
   #Break into lists of days and presents
   day = [d[0] for d in component]
@@ -37,6 +35,6 @@ def recite(start_verse, end_verse):
   #For num in given start verse
   #Take index of component minus 1 since component index 0 is day 1
   for verse in range(start_verse, end_verse + 1):
-    song.append(f'On the {day[verse-1]} day of Christmas my true love gave to me: {getSong(verse)}')
+    song.append(f'On the {day[verse-1]} day of Christmas my true love gave to me: {get_song(verse)}')
 
   return song
