@@ -6,7 +6,7 @@ def count_words(sentence):
   #Split on any special character
   words = re.split(r"[^A-Za-z0-9']", sentence)
 
-  #Filter words and build dictionary
+  #Punctuation includes all except apostrophe
   punc = set(punctuation) - {"'"}
 
   def cleaned(word):
@@ -14,7 +14,7 @@ def count_words(sentence):
     word = "".join([char for char in word if char not in punc])
     #Remove leading / trailing apostrophe
     word = word.strip(punctuation)
-    #Return word in lower case
+    #Return word in lower case (returning empty possible)
     return word.lower()
 
   for word in words:
