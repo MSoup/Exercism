@@ -1,2 +1,2 @@
 language = "python3"
-run = "python twelve-days/twelve_days_test.py"
+run = "python word-count/word_count_test.py"
