@@ -1,19 +1,4 @@
 def score(word):
-  score_map = {}
-  for letter in ("A, E, I, O, U, L, N, R, S, T").split(", "):
-    score_map[letter] = 1
-  for letter in ("D, G").split(", "):
-    score_map[letter] = 2
-  for letter in ("B, C, M, P").split(", "):
-    score_map[letter] = 3
-  for letter in ("F, H, V, W, Y").split(", "):
-    score_map[letter] = 4
-  
-  #Only one 5 point letter
-  score_map["K"] = 5
-  for letter in ("J, X").split(", "):
-    score_map[letter] = 8
-  for letter in ("Q, Z").split(", "):
-    score_map[letter] = 10
+  score_map = {'A': 1, 'E': 1, 'I': 1, 'O': 1, 'U': 1, 'L': 1, 'N': 1, 'R': 1, 'S': 1, 'T': 1, 'D': 2, 'G': 2, 'B': 3, 'C': 3, 'M': 3, 'P': 3, 'F': 4, 'H': 4, 'V': 4, 'W': 4, 'Y': 4, 'K': 5, 'J': 8, 'X': 8, 'Q': 10, 'Z': 10}
   
   return sum(score_map[char] for char in word.upper())
