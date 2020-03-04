@@ -1,2 +1,2 @@
 language = "python3"
-run = "python scrabble-score/scrabble_score_test.py"
+run = "python palindrome-products/palindrome_products_test.py"
