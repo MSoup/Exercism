@@ -1,2 +1,2 @@
 language = "python3"
-run = "python saddle-points/saddle_points_test.py"
+run = "python triangle/triangle_test.py"
