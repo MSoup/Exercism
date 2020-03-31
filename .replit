@@ -1,2 +1,3 @@
 language = "python3"
-run = "python saddle-points/saddle_points_test.py"
+run = "python error-handling/error_handling_test.py"
+
