@@ -1,9 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
-class Garden:
-
-    def __init__(self, diagram, students=[
+plant_names = {
+            'R': 'Radishes',
+            'C': 'Clover',
+            'G': 'Grass',
+            'V': 'Violets',
+            }
+students = [
         'Alice',
         'Bob',
         'Charlie',
@@ -16,13 +19,12 @@ class Garden:
         'Joseph',
         'Kincaid',
         'Larry',
-        ]):
-        self.plant_names = {
-            'R': 'Radishes',
-            'C': 'Clover',
-            'G': 'Grass',
-            'V': 'Violets',
-            }
+        ]
+
+class Garden:
+
+    def __init__(self, diagram, students=students):
+        
         self.students = sorted(students)
 
         self.clusters = diagram.split('\n')
@@ -39,7 +41,7 @@ class Garden:
 
             # Assign the flowers to each students
 
-            self.belongings[student] = [self.plant_names[letter]
+            self.belongings[student] = [plant_names[letter]
                     for letter in student_has]
 
     def plants(self, student):
