@@ -27,7 +27,7 @@ class Garden:
         
         self.students = sorted(students)
 
-        self.clusters = diagram.split('\n')
+        self.clusters = diagram.splitlines()
 
         self.belongings = {}
         for student in self.students:
